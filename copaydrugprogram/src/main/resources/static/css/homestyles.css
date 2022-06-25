@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tiro+Devanagari+Marathi:ital@0;1&family=Tiro+Devanagari+Sanskrit&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+} 
+
+#content {
+  background-image: url("../img/home-background-new.jpg");  
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.description {
+  font-family: "Tiro Devanagari Marathi", serif;
+}
+
+#welcome {
+  text-align: center;
+}
+
+#demo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.description p {
+  color: black;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+ 
+ .navbar-header a {
+ float:right;
+ }
+ 
+ #login {
+  background-image: url("../img/home-background-new.jpg");  
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#registration {
+  background-image: url("../img/home-background-new.jpg");  
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
