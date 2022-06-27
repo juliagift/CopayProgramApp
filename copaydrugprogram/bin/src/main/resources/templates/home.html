@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Julia's Copay Program</title>
+    <style>
+      .description h1,
+      section p strong {
+        color: #6ab446;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homestyles.css}" />
+    <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tiro+Devanagari+Marathi:ital@0;1&family=Tiro+Devanagari+Sanskrit&display=swap"
+	rel="stylesheet" />
+  </head>
+  <body>
+	<!-- navigation bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+			<!-- <a id="welcome">Urimex Copay Program!</a> -->
+				<a class="navbar-brand" th:href="@{/login}">Login </a>
+			</div>
+		</div>
+	</nav>
+    <div class="page-header header container-fluid" id="content">
+      <div class="description">
+      
+        
+        <p>
+          Do you suffer from high blood pressure? Headaches? Stress? 
+          Here at Join Us Living In Amazing (JULIA), we've worked hard to address
+          the everyday issues of the everyday person.
+          
+        </p>
+        <p>
+          Urimex is the leading brand used in treating <i>everything</i>!
+          You name it, Urimex treats it. 
+        </p>
+        <p>
+          Hypertention? Gone.
+        </p>
+        <p>
+          Diabetes? Gone.
+        </p>
+        <p>
+          Cancer? Gone for good!
+        </p>
+        <br />
+                <br />
+        <section>
+          <p>
+            <strong
+              >If you cannot afford Urimex, we are here to help.</strong
+            >
+          </p>
+        </section>
+        <br />
+       
+
+        <p>
+          Please answer the following eligibility questions:
+        </p>
+        <form id="precheck" th:action="@{/registration}">
+          <p>Are you a US citizen?</p>
+          <input type="radio" id="citizen_yes" name="citizen" />
+          <label for="citizen_yes">Yes</label><br />
+          <input type="radio" id="citizen_no" name="citizen" />
+          <label for="citizen_no">No</label><br />
+
+          <br />
+
+          <p>Do you have commercial insurance?</p>
+          <input type="radio" id="insurance_yes" name="insurance" />
+          <label for="insurance_yes">Yes</label><br />
+          <input type="radio" id="insurance_no" name="insurance" />
+          <label for="insurance_no">No</label><br />
+
+          <br />
+          
+          <p>Are you 18 years or older?</p>
+          <input type="radio" id="age_yes" name="age" />
+          <label for="age_yes">Yes</label><br />
+          <input type="radio" id="age_no" name="age" />
+          <label for="age_no">No</label><br />
+
+          <br />
+
+          <input
+            onclick="return validateInput()"
+            type="submit"
+            value="Enroll Now"
+          />
+        </form>
+        <p id="error_home_msg"></p>
+      </div>
+    </div>
+    
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+     Copyright 2022 Julia Gift
+  </div>
+    
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+  </body>
+</html>

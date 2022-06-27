@@ -1,7 +1,5 @@
 package org.juliagift.copaydrugprogram.repository;
 
-import java.util.List;
-
 import org.juliagift.copaydrugprogram.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

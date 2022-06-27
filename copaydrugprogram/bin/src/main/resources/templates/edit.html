@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" th:href="@{/css/dashboardStyles.css}" />
+<title>Claim</title>
+</head>
+
+<body>
+
+	<div class="d-flex" id="wrapper">
+		<!-- Sidebar -->
+		<div class="bg-white" id="sidebar-wrapper">
+			<div
+				class="sidebar-heading text-center py-4 primary-text fs-4 text-uppercase border-bottom">Copay
+				Program</div>
+			<div class="list-group list-group-flush my-3">
+				<a th:href="@{/userDashboard}"
+					class="list-group-item list-group-item-action bg-transparent second-text active">Dashboard</a>
+				<a th:href="@{/claim}"
+					class="list-group-item list-group-item-action bg-transparent second-text fw-bold">SUBMIT
+					CLAIM</a> <a th:href="@{/claims}"
+					class="list-group-item list-group-item-action bg-transparent second-text fw-bold">VIEW
+					CLAIMS</a> <a th:href="@{/edit}"
+					class="list-group-item list-group-item-action bg-transparent second-text fw-bold">EDIT
+					PROFILE</a> <a th:href="@{/delete}"
+					class="list-group-item list-group-item-action bg-transparent second-text fw-bold">DELETE
+					ACCOUNT</a>
+			</div>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<nav
+				class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+				<div class="d-flex align-items-center">
+					<i class="fas fa-align-left primary-text fs-4 me-3"
+						id="menu-toggle"></i>
+					<h2 class="fs-2 m-0">User Dashboard</h2>
+				</div>
+
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle second-text fw-bold" href="#"
+							id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false"> <i class="fas fa-user me-2"></i><span
+								sec:authentication="principal.username"></span>
+						</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" th:href="@{/profile}">Profile</a></li>
+								<li sec:authorize="isAuthenticated()"><a
+									class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</nav>
+			<br> <br> <br> <br>
+			<form th:action="@{/edit}" th:object="${user}" method="post">
+
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration"
+						style="border-radius: 15px; background-color: 9FA2B4">
+						<div class="card-body p-4 p-md-5">
+
+							<!-- success message -->
+							<div th:if="${param.success}">
+								<div class="alert alert-info">You've successfully updated
+									your profile!</div>
+							</div>
+
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">User Profile</h3>
+							<div>
+
+								<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+									th:each="error : ${#fields.errors('global')}"
+									th:text="${error}"></p>
+
+
+
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<label class="form-label" for="userId"></label> <input
+												class="form-control form-control-lg" type="hidden"
+												id="userId" name="userId" th:value="${user.userId}"
+												th:field="*{userId}" />
+
+										</div>
+									</div>
+
+								</div>
+
+
+
+
+
+
+
+
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+											<label class="form-label" for="firstName">First Name</label>
+											<input class="form-control form-control-lg" type="text"
+												id="firstName" name="firstName" th:value="${user.firstName}"
+												th:field="*{firstName}" />
+
+											<p class="error-message"
+												th:each="error: ${#fields.errors('firstName')}"
+												th:text="${error}"></p>
+
+										</div>
+									</div>
+
+									<div class="col-md-6 mb-4">
+										<div class="form-outline date"
+											th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+											<label class="form-label" for="lastName">Last Name</label> <input
+												class="form-control form-control-lg" type="text"
+												id="lastName" name="lastName" th:value="${user.lastName}"
+												th:field="*{lastName}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('lastName')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 d-flex align-items-center">
+										<div class="form-outline datepicker w-100"
+											th:classappend="${#fields.hasErrors('dob')}? 'has-error':''">
+											<label for="dob" class="form-label">Date of Birth</label> <input
+												class="form-control form-control-lg" type="date" id="dob"
+												name="dob" th:value="${user.dob}" th:field="*{dob}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('dob')}" th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<h6 class="mb-2 pb-1">Gender:</h6>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="femaleGender"
+												th:value="${user.gender}">Female</label> <input
+												class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="femaleGender" value="female"
+												th:field="*{gender}" checked required />
+										</div>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="maleGender">Male</label>
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="maleGender" value="male"
+												th:field="*{gender}" />
+										</div>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="otherGender">Other</label>
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="otherGender" value="other"
+												th:field="*{gender}" />
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-12 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('phoneNumber')}? 'has-error':''">
+											<label class="form-label" for="phoneNumber">Phone
+												Number</label> <input class="form-control form-control-lg"
+												type="tel" id="phoneNumber" name="phoneNumber"
+												th:value="${user.phoneNumber}" th:field="*{phoneNumber}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('phoneNumber')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('address1')}? 'has-error':''">
+											<label class="form-label" for="address1">Address1</label> <input
+												class="form-control form-control-lg" type="text"
+												id="address1" name="address1" th:value="${user.address1}"
+												th:field="*{address1}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('address1')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('address2')}? 'has-error':''">
+											<label class="form-label" for="address2">Address2</label> <input
+												class="form-control form-control-lg" type="text"
+												id="address2" name="address2" th:value="${user.address2}"
+												th:field="*{address2}" />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('address2')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
+											<label class="form-label" for="city">City</label> <input
+												class="form-control form-control-lg" type="text" id="city"
+												name="city" th:value="${user.city}" th:field="*{city}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('city')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('state')}? 'has-error':''">
+											<label for="state" class="form-label">State</label> <select
+												th:if="${user.state == 'AL'}"
+												class="form-control form-control-lg" id="state" name="state"
+												required>
+												<option value="AL" selected>AL</option>
+												<option value="AZ">AZ</option>
+												<option value="FL">FL</option>
+											</select> <select th:if="${user.state == 'AZ'}"
+												class="form-control form-control-lg" id="state" name="state"
+												required>
+												<option value="AL">AL</option>
+												<option value="AZ" selected>AZ</option>
+												<option value="FL">FL</option>
+											</select> <select th:if="${user.state == 'FL'}"
+												class="form-control form-control-lg" id="state" name="state"
+												required>
+												<option value="AL">AL</option>
+												<option value="AZ">AZ</option>
+												<option value="FL" selected>FL</option>
+											</select>
+
+											<p class="error-message"
+												th:each="error: ${#fields.errors('state')}"
+												th:text="${error}"></p>
+										</div>
+
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('zip5')}? 'has-error':''">
+											<label class="form-label" for="zip5">Zip5</label> <input
+												class="form-control form-control-lg" type="text" id="zip5"
+												name="zip5" th:value="${user.zip5}" th:field="*{zip5}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('zip5')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('zip4')}? 'has-error':''">
+											<label class="form-label" for="zip4">Zip4</label> <input
+												class="form-control form-control-lg" type="text" id="zip4"
+												name="zip4" th:value="${user.zip4}" th:field="*{zip4}" />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('zip4')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="mt-4 pt-2">
+									<input class="btn btn-primary btn-lg" type="submit"
+										value="Update" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+			</form>
+
+
+
+
+
+		</div>
+		<!-- /#page-content-wrapper -->
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		var el = document.getElementById("wrapper");
+		var toggleButton = document.getElementById("menu-toggle");
+
+		toggleButton.onclick = function() {
+			el.classList.toggle("toggled");
+		};
+	</script>
+	<script type="text/javascript" th:src="@{js/index.js}"></script>
+</body>
+
+</html>

@@ -1,9 +1,7 @@
 package org.juliagift.copaydrugprogram.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -11,20 +9,16 @@ import org.juliagift.copaydrugprogram.dto.UserProfileDto;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
-import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.Pharmacy;
 import org.juliagift.copaydrugprogram.model.Role;
 import org.juliagift.copaydrugprogram.model.User;
 import org.juliagift.copaydrugprogram.repository.CardRepository;
-import org.juliagift.copaydrugprogram.repository.ClaimRepository;
 import org.juliagift.copaydrugprogram.repository.LoginRepository;
 import org.juliagift.copaydrugprogram.repository.PharmacyRepository;
 import org.juliagift.copaydrugprogram.repository.RoleRepository;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

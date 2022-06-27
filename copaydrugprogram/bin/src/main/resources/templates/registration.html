@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/homestyles.css}" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tiro+Devanagari+Marathi:ital@0;1&family=Tiro+Devanagari+Sanskrit&display=swap"
+	rel="stylesheet" />
+<style>
+form {
+	font-family: "Tiro Devanagari Marathi", serif;
+}
+</style>
+</head>
+
+<body>
+
+	<!-- navigation bar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/home}">Home </a>
+				<a class="navbar-brand" th:href="@{/login}">Login </a>
+			</div>
+		</div>
+	</nav>
+
+	<form class="vh-100 gradient-custom" id="registration"
+		 th:action="@{/registration}"
+		th:object="${user}" method="post">
+		<div class="container py-5 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+			
+			
+			
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration"
+						style="border-radius: 15px; background-color: 9FA2B4">
+						<div class="card-body p-4 p-md-5">
+
+							<!-- success message -->
+							<div th:if="${param.success}">
+								<div class="alert alert-info">You've successfully
+									registered to our awesome copay program!</div>
+							</div>
+
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+							<div>
+
+								<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+									th:each="error : ${#fields.errors('global')}"
+									th:text="${error}"></p>
+
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+											<!-- <label class="form-label" for="firstName">First Name</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="firstName" name="firstName" placeholder="First Name"
+												th:field="*{firstName}" />
+												
+											<p class="error-message"
+												th:each="error: ${#fields.errors('firstName')}"
+												th:text="${error}"></p>
+
+										</div>
+									</div>
+														
+									<div class="col-md-6 mb-4">
+										<div class="form-outline date"
+											th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+											<!-- <label class="form-label" for="lastName">Last Name</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="lastName" name="lastName" placeholder="Last Name"
+												th:field="*{lastName}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('lastName')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 d-flex align-items-center">
+										<div class="form-outline datepicker w-100" th:classappend="${#fields.hasErrors('dob')}? 'has-error':''">
+											<label for="dob" class="form-label">Date of Birth</label> <input
+												class="form-control form-control-lg" type="date" id="dob"
+												name="dob" th:field="*{dob}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('dob')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<h6 class="mb-2 pb-1">Gender:</h6>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="femaleGender">Female</label>
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="femaleGender" value="female"
+												th:field="*{gender}" checked required />
+										</div>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="maleGender">Male</label>
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="maleGender" value="male"
+												th:field="*{gender}" />
+										</div>
+
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="otherGender">Other</label>
+											<input class="form-check-input" type="radio"
+												name="inlineRadioOptions" id="otherGender" value="other"
+												th:field="*{gender}" />
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-12 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('phoneNumber')}? 'has-error':''">
+											<!-- <label class="form-label" for="phoneNumber">Phone Number</label> -->
+											<input class="form-control form-control-lg" type="tel"
+												id="phoneNumber" name="phoneNumber"
+												placeholder="Phone Number" th:field="*{phoneNumber}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('phoneNumber')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('address1')}? 'has-error':''">
+											<!-- <label class="form-label" for="address1">Address1</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="address1" name="address1" placeholder="Address1"
+												th:field="*{address1}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('address1')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('address2')}? 'has-error':''">
+											<!-- <label class="form-label" for="address2">Address2</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="address2" name="address2" placeholder="Address2"
+												th:field="*{address2}" />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('address2')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
+											<!-- <label class="form-label" for="city">City</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="city" name="city" placeholder="City" 
+												th:field="*{city}" required/>
+											<p class="error-message"
+												th:each="error: ${#fields.errors('city')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+
+										<div class="form-outline" th:classappend="${#fields.hasErrors('state')}? 'has-error':''">
+											<!-- 	<label for="state" class="form-label">State</label> -->
+											<select class="form-control form-control-lg" id="state"
+												name="state" required>
+												<option value="none" selected disabled>Choose state</option>
+
+												<option value="AL">AL</option>
+												<option value="AZ">AZ</option>
+												<option value="FL">FL</option>
+											</select>
+											<p class="error-message"
+												th:each="error: ${#fields.errors('state')}"
+												th:text="${error}"></p>
+										</div>
+
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('zip5')}? 'has-error':''">
+											<!-- <label class="form-label" for="zip5">Zip5</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="zip5" name="zip5" placeholder="Zip5" th:field="*{zip5}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('zip5')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('zip4')}? 'has-error':''">
+											<!-- <label class="form-label" for="zip4">Zip4</label> -->
+											<input class="form-control form-control-lg" type="text"
+												id="zip4" name="zip4" placeholder="Zip4" th:field="*{zip4}" />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('zip4')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+											<!-- <label class="form-label" for="email">Email</label> -->
+											<input class="form-control form-control-lg" type="email"
+												id="email" name="email" placeholder="Email"
+												th:field="*{email}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('email')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
+											<!-- <label class="form-label" for="confirmEmail">Confirm Email</label> -->
+											<input class="form-control form-control-lg" type="email"
+												id="confirmEmail" name="confirmEmail"
+												placeholder="Confirm Email" th:field="*{confirmEmail}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('confirmEmail')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+											<!-- <label class="form-label" for="password">Password</label> -->
+											<input class="form-control form-control-lg" type="password"
+												id="password" name="password" placeholder="Password"
+												th:field="*{password}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('password')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+											<!-- <label class="form-label" for="confirmPassword">Confirm Password</label> -->
+											<input class="form-control form-control-lg" type="password"
+												id="confirmPassword" name="confirmPassword"
+												placeholder="Confirm Password" th:field="*{confirmPassword}"
+												required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('confirmPassword')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+								<!-- <div class="row">
+									<div class="col-md-12 mb-4">
+										<label for="drug" class="form-label select-label active"
+											style="margin-left: 0px">Choose Drug</label> 
+											<select name="drug"
+											class="form-control form-control-lg" id="drug" required>
+											<option value="0">Choose drug</option> 
+											Drugs are populated here from the UserRegistrationController
+											 <option th:each="drug : ${drugs}" 
+											 		th:text="${drug.name}"
+													>
+													</option>
+													
+													th:text="${drug.name}"
+													th:value="${drug.drugId}"
+													
+													
+										</select>
+										
+										<select class="form-control form-control-lg" id="state"
+												name="state" required>
+												<option>Choose state</option>
+												<option value="AL">AL</option>
+												<option value="AZ">AZ</option>
+												<option value="FL">FL</option>
+											</select>
+									</div>
+								</div>  -->
+
+
+								<div class="row">
+									<div class="col-md-12 mb-4">
+										<div class="form-outline"
+											th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
+											<input type="checkbox" id="terms" name="terms"
+												th:field="*{terms}" /> <label class="form-label"
+												for="terms">I agree with the <a href="#">terms
+													and conditions</a> for Registration.
+											</label>
+
+
+											<p class="error-message"
+												th:each="error: ${#fields.errors('terms')}"
+												th:text="${error}"></p>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="mt-4 pt-2">
+									<input class="btn btn-primary btn-lg" type="submit"
+										value="Register" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+	<!-- JavaScript -->
+	<script type="text/javascript" src="@{/js/index.js}"></script>
+</body>
+
+</html>

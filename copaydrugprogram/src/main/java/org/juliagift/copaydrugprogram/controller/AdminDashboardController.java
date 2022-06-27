@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
-import org.juliagift.copaydrugprogram.model.User;
 import org.juliagift.copaydrugprogram.service.CardService;
 import org.juliagift.copaydrugprogram.service.ClaimService;
-import org.juliagift.copaydrugprogram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Controller;

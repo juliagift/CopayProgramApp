@@ -2,8 +2,6 @@ package org.juliagift.copaydrugprogram.model;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
