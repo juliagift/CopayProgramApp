@@ -1,6 +1,6 @@
 # Copay Card Application
 
-Description
+DESCRIPTION
 
 This application simulates copay card operations which features role-based multiple dashboard access from a login page. Two roles are implemented, namely user and admin.
 
@@ -20,7 +20,7 @@ Admin can:
 
 Once a user’s account is deleted, they can no longer log back in. Their account information still persists in the database and can be accessed by the admin.
 
-Technologies used
+TECHNOLOGIES USED
 
 Spring Boot Project
 
