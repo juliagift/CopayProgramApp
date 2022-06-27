@@ -36,4 +36,5 @@ Spring Boot Project
 * Thymeleaf
 * JavaScript
 
+
 Database: Mariadb
