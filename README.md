@@ -21,8 +21,13 @@ Once a user’s account is deleted, they can no longer log back in. Their accoun
 
 Technologies used
 Spring Boot Project
-	Dependencies:
-	* Spring Web
+Dependencies:
+* Spring Web
+* Spring Boot DevTools
+* Spring Data JPA
+* Spring Security
+* Validation I/O
+* Lombok 
 
 
 Technologies used:
