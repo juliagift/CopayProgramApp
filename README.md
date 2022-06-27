@@ -19,6 +19,12 @@ Admin can:
 
 Once a user’s account is deleted, they can no longer log back in. Their account information still persists in the database and can be accessed by the admin.
 
+Technologies used
+Spring Boot Project
+	Dependencies:
+	* Spring Web
+
+
 Technologies used:
 Spring Boot Project
 	Dependencies:
