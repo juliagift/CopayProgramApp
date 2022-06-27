@@ -37,4 +37,4 @@ Spring Boot Project
 * JavaScript
 
 
-Database: Mariadb
+Database: MariaDB
