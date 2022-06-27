@@ -1,6 +1,7 @@
 # Copay Card Application
 
 Description
+
 This application simulates copay card operations which features role-based multiple dashboard access from a login page. Two roles are implemented, namely user and admin.
 
 Users can:
