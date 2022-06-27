@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 The user-based redirect is configured using the customized Success Handler 
 for spring boot security. Create a Login Success Handler class with AuthenticationSuccessHandler. 
 The AuthenticationSuccessHandler interface will be called for successful login authentication. 
-Add the logic to redirect the user’s role to the respective dashboard pages.
+It redircts the user to the their respective dashboard pages based on their role.
 */
 
 @Component
@@ -32,28 +32,18 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		for (GrantedAuthority grantedAuthority : authorities) {
 			
-			System.out.println("I am here in the custom success handler");
-			
-			System.out.println("role " + grantedAuthority.getAuthority());
-			
-			if (grantedAuthority.getAuthority().equals("USER")) {
+			if (grantedAuthority.getAuthority().equals("USER")) { // Users go to the User Dashboard.
 				redirectUrl = "/userDashboard";
 				break;
-			} else if (grantedAuthority.getAuthority().equals("ADMIN")) {
+			} else if (grantedAuthority.getAuthority().equals("ADMIN")) { // Admins go to the Admin Dashboard.
 				redirectUrl = "/adminDashboard";
 				break;
 			}
 		}
-		
-		System.out.println("redirectUrl " + redirectUrl);
-		
+				
 		if (redirectUrl == null) {
 			throw new IllegalStateException();
 		}
 		new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
-		
 	}
-
 }
-
-

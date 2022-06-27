@@ -22,11 +22,13 @@ public class AdminDashboardController {
 	@Autowired
 	private CardService cardService;
 
+	// Returns the Admin Dashboard.
 	@GetMapping("/adminDashboard")
 	public ModelAndView showAdminDashboard() {
 		return new ModelAndView("adminDashboard");
 	}
 
+	// Returns all claims in the database.
 	@GetMapping("/allClaims")
 	public String getAllClaims(Model model) {
 		try {
@@ -35,12 +37,12 @@ public class AdminDashboardController {
 			
 			return "allClaims";
 		} catch (NotFoundException e) {
-			System.out.println("No Claims found");
-			
+			System.out.println("No Claims found!");
 			return "redirect:/adminDashboard";
 		}
 	}
 	
+	// Returns all the patients in the database.
 	@GetMapping("/allPatients")
 	public String getAllCards(Model model) {
 		try {
@@ -49,10 +51,8 @@ public class AdminDashboardController {
 			
 			return "allUsers";
 		} catch (NotFoundException e) {
-			System.out.println("No Cards found");
-			
+			System.out.println("No Cards found!");	
 			return "redirect:/adminDashboard";
 		}
 	}
-
 }

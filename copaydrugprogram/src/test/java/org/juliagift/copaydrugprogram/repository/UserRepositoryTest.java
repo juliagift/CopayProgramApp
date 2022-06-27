@@ -40,7 +40,7 @@ class UserRepositoryTest {
 
 	@Test
 	void testFindUserByEmail() {
-		User user1 = userRepository.findUserByEmail("jedobor@gmail.com");
+		User user1 = userRepository.findUserByEmail("forgetful.jones@aol.com");
 
 		// should test with a deleted user
 		User user2 = userRepository.findUserByEmail("notinthedb@gmail.com");
@@ -50,7 +50,7 @@ class UserRepositoryTest {
 
 		assertEquals("Jannike", user1.getFirstName());
 
-		User user = userRepository.findUserByEmail("jedobor@gmail.com");
+		User user = userRepository.findUserByEmail("forgetful.jones@aol.com");
 
 		Collection<Role> roles = user.getRoles();
 

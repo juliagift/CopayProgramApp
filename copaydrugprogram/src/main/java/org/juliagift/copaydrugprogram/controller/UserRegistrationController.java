@@ -27,35 +27,29 @@ public class UserRegistrationController {
 		return new UserRegistrationDto();
 	}
 	
-	// Return registration form template
+	// Returns the registration form.
 	@GetMapping
 	public String showRegistrationForm(Model model) {
-		
 		return "registration";
 	}
 	
-	// Process form input data
+	// Processes the form input data.
 	@PostMapping
 	public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
 			BindingResult result) {
 		
-		// Lookup patient in database by email
+		// Lookup the user by their email.
 		User existingUser = userService.findUserByEmail(userDto.getEmail());
+		
 		if (existingUser != null) {
-			result.rejectValue("email", null, "There is already an account registered with that email");
-			
+			result.rejectValue("email", null, "There is already an account registered with that email.");
 		}
 		
 		if (result.hasErrors()) {
 			return "registration";
 		}
 		
-
 		userService.registerUser(userDto);
 		return "redirect:/registration?success";
-
 	}
-	
-	
-
 }

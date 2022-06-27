@@ -85,5 +85,4 @@ public class UserRegistrationDto {
 
 	@AssertTrue(message = "Checkbox must be selected in order to register.")
 	private Boolean terms;
-
 }

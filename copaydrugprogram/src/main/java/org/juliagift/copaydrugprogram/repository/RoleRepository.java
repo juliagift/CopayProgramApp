@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>{
 	
-	@Query(value = "FROM Role WHERE name = :name")
+	// Returns a role, given the role name.
 	Role findByName(String name);
-	
-
 }

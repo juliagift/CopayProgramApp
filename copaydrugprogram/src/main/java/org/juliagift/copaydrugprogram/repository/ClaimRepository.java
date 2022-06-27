@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClaimRepository extends JpaRepository<Claim, Long>{
-	@Query(value = "SELECT c.* FROM claim c where c.card_id = :id",  nativeQuery = true)
+	
+	// Returns all the claims for a given card.
+	@Query(value = "SELECT c.* FROM claim c WHERE c.card_id = :id",  nativeQuery = true)
 	List<Claim> getAllClaimsByCard(Long id);
 }

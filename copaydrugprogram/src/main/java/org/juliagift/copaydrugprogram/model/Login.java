@@ -35,6 +35,4 @@ public class Login {
 		this.email = email;
 		this.password = password;
 	}
-
-	
 }

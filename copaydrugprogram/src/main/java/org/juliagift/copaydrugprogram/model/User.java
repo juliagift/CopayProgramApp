@@ -72,7 +72,6 @@ public class User {
 
 	private String zip4;
 	
-
 	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")
 	private Login login;
@@ -80,7 +79,23 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
-	
 
-
+	public User(@NotNull String firstName, @NotNull String lastName, @NotNull Date dob, @NotNull String gender,
+			@NotNull String phoneNumber, @NotNull String address1, String address2, @NotNull String city,
+			@NotNull String state, @NotNull String zip5, String zip4, Login login, Collection<Role> roles) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.gender = gender;
+		this.phoneNumber = phoneNumber;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.city = city;
+		this.state = state;
+		this.zip5 = zip5;
+		this.zip4 = zip4;
+		this.login = login;
+		this.roles = roles;
+	}
 }

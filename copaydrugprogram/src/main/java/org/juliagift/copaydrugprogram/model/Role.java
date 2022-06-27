@@ -34,6 +34,8 @@ public class Role {
 	}
 
 	@Override
+	// For the purposes of this application, a role is equal to another
+	// if the role names match.
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -49,6 +51,4 @@ public class Role {
 	public int hashCode() {
 		return Objects.hash(name);
 	}
-	
-	
 }

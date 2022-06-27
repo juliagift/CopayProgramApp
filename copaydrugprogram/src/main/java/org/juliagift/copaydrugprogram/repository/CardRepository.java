@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 	
+	// Returns a card, given an email.
 	@Query(value = "SELECT c.* FROM Card c JOIN User u ON c.user_id = u.user_id JOIN Login l ON u.login_id = l.login_id WHERE l.email = :email", nativeQuery = true)
 	Card findCardByEmail(String email);
-
 }

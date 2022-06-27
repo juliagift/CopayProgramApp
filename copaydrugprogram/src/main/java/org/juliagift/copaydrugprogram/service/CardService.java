@@ -7,6 +7,9 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 public interface CardService {
 	
-	Card findCardByEmail(String email) throws NotFoundException;
+	// Returns all the cards in the database.
 	List<Card> findAllCards() throws NotFoundException;
+	
+	// Returns a card, given an email.
+	Card findCardByEmail(String email) throws NotFoundException;
 }

@@ -15,13 +15,17 @@ public class CardServiceImpl implements CardService{
 	@Autowired
 	private CardRepository cardRepository;
 
+	// Returns all the cards in the database.
+	@Override
+	public List<Card> findAllCards() throws NotFoundException {
+		return cardRepository.findAll();
+	}
+
+	// Returns a card, given an email.
 	@Override
 	public Card findCardByEmail(String email) throws NotFoundException {
 		
 		Card card = cardRepository.findCardByEmail(email);
-		
-		System.out.println("I am here in the cardservice/findCardByEmail");
-		System.out.println(card);
 		
 		if(card == null) {
 			throw new NotFoundException();
@@ -29,14 +33,4 @@ public class CardServiceImpl implements CardService{
 		
 		return card;
 	}
-
-	@Override
-	public List<Card> findAllCards() throws NotFoundException {
-		List<Card> cards = new ArrayList<>();
-		
-		cards = cardRepository.findAll();
-		
-		return cards;
-	}
-
 }

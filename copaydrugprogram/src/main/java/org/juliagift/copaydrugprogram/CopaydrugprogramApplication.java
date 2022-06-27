@@ -9,5 +9,4 @@ public class CopaydrugprogramApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CopaydrugprogramApplication.class, args);
 	}
-
 }

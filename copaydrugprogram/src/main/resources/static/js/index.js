@@ -1,4 +1,4 @@
-// Validates that both answers are YES. If either is NO, then prints a message, and does not allow
+// Validates that all answers are YES. If any are NO, then prints a message, and does not allow
 // user to continue to the Registration Page.
 var validateInput = () => {
 	try {

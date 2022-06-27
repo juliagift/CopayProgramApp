@@ -16,52 +16,38 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClaimServiceImpl implements ClaimService {
-	
-	public static final double DRUG_COST = 100.0;
+
+	// The actual cost of the drug.
+	// The amount the patient pays will be a percentage of this.
+	public static final Double DRUG_COST = 100.0;
 	
 	@Autowired
-	private CardRepository cardRepository;;
+	private CardRepository cardRepository;
 	
 	@Autowired
 	private ClaimRepository claimRepository;
-	
 
-	@Override
-	public Claim submitClaim(UserDetails userDetails, Pharmacy pharmacy) throws NotFoundException {
-		String userEmail = userDetails.getUsername();	
-		Card card = cardRepository.findCardByEmail(userEmail);
-		Claim claim = new Claim();
-		
-		claim.setDrugCostAtClaim(DRUG_COST);
-		claim.setManufacturerPayment((1 - card.getBenefit()) * DRUG_COST);
-		claim.setPatientPayment(card.getBenefit() * DRUG_COST);
-		claim.setStatus("P");
-		claim.setTransactionDate(LocalDateTime.now());
-		claim.setCard(card);
-		claim.setPharmacy(pharmacy);
-
-		return claimRepository.save(claim);
-	}
-	
+	// Returns all the claims in the database.
 	@Override
 	public List<Claim> getAllClaims() throws NotFoundException {
-		List<Claim> claims = new ArrayList<>();
-		
-		claims = claimRepository.findAll();
-
-		return claims;
-		
+		return claimRepository.findAll();	
 	}
 
+	// Returns all the claims for a given card.
 	@Override
 	public List<Claim> getAllClaimsByCard(Card card) throws NotFoundException {
-		List<Claim> claims = new ArrayList<>();
-		
-		claims = claimRepository.getAllClaimsByCard(card.getCardId());
-		
-		return claims;
+		return claimRepository.getAllClaimsByCard(card.getCardId());
 	}
-	
-	
 
+	// Writes a claim to the database.
+	@Override
+	public Claim submitClaim(UserDetails userDetails, Pharmacy pharmacy) throws NotFoundException {
+		Card card = cardRepository.findCardByEmail(userDetails.getUsername());
+		Double patientPayment = card.getBenefit() * DRUG_COST;
+		Double manufacturerPayment = 1 - card.getBenefit() * DRUG_COST;
+		
+		Claim claim = new Claim("P", DRUG_COST, patientPayment, manufacturerPayment, LocalDateTime.now(), card, pharmacy);
+
+		return claimRepository.save(claim);
+	}	
 }

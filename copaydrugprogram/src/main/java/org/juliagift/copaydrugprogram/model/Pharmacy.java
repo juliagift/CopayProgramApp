@@ -63,6 +63,4 @@ public class Pharmacy {
 		this.pharmacyId = pharmacyId;
 		this.name = name;
 	}	
-	
-	
 }
