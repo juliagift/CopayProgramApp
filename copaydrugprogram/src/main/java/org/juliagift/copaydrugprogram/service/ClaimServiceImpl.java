@@ -1,7 +1,6 @@
 package org.juliagift.copaydrugprogram.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.juliagift.copaydrugprogram.model.Card;

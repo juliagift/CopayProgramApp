@@ -6,8 +6,6 @@
 } 
 
 #content {
-  /* background-image: url("../img/home-background-new.jpg");   */
-  /* opacity: 1; */
   height: 100vh;
   background-color: #80ff80;
   background-repeat: no-repeat;
@@ -31,16 +29,6 @@
   width: 50%;
 }
 
-/* .description p { */
-/*   color: black; */
-/*   font-size: 1.3rem; */
-/*   line-height: 1.5; */
-/* } */
- 
- /* .navbar-header a {
- float:right;
- } */
- 
  #login {
   background-image: url("../img/home-background-new.jpg");  
   height: 100vh;

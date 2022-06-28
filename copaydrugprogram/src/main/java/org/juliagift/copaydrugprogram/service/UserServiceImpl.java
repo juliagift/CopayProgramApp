@@ -1,7 +1,6 @@
 package org.juliagift.copaydrugprogram.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
