@@ -1,11 +1,7 @@
 package org.juliagift.copaydrugprogram.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,15 +11,11 @@ import org.juliagift.copaydrugprogram.dto.UserProfileDto;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
-import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.Pharmacy;
-import org.juliagift.copaydrugprogram.model.Role;
 import org.juliagift.copaydrugprogram.model.User;
-import org.juliagift.copaydrugprogram.repository.PharmacyRepository;
 import org.juliagift.copaydrugprogram.service.CardService;
 import org.juliagift.copaydrugprogram.service.ClaimService;
 import org.juliagift.copaydrugprogram.service.PharmacyService;
-import org.juliagift.copaydrugprogram.service.RoleService;
 import org.juliagift.copaydrugprogram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;

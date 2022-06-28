@@ -60,8 +60,8 @@ public class Claim {
 	@JoinColumn(name = "pharmacy_id")
 	private Pharmacy pharmacy;
 
-	public Claim(@NotNull String status, @NotNull Double drugCostAtClaim, @NotNull Double patientPayment,
-			@NotNull Double manufacturerPayment, @NotNull LocalDateTime transactionDate, Card card, Pharmacy pharmacy) {
+	public Claim(String status, Double drugCostAtClaim, Double patientPayment,
+			Double manufacturerPayment, LocalDateTime transactionDate, Card card, Pharmacy pharmacy) {
 		super();
 		this.status = status;
 		this.drugCostAtClaim = drugCostAtClaim;
