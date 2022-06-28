@@ -45,11 +45,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><span sec:authentication="name"></span>
+                                <i class="fas fa-user me-2"></i><span
+								th:text="${user.firstName}"></span> <span
+								th:text="${user.lastName}"></span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" th:href="@{/adminProfile}">Profile</a></li>
-                                <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                                 <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

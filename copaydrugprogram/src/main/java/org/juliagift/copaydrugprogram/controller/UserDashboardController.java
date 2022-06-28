@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -137,8 +138,21 @@ public class UserDashboardController {
 
 	// Returns the page for the user to submit claims.
 	@GetMapping("/claim")
-	public String submitClaim(Model model) {
+	public String submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model,
+			RedirectAttributes redirectAttributes) {
 		
+		Card card = null;
+
+		// Lookup the user's card by their email.
+		try {
+			card = cardService.findCardByEmail(userDetails.getUsername());
+			model.addAttribute("card", card);
+
+		} catch (NotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "No cards found.");
+
+		}
+
 		// This list populates the pharmacy dropdown in claim.html.
 		List<Pharmacy> pharmacies;
 		try {
@@ -186,7 +200,6 @@ public class UserDashboardController {
 
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "No cards found.");
-
 		}
 
 		// Use that card to find all the associated claims.
@@ -200,6 +213,23 @@ public class UserDashboardController {
 		}
 	}
 
+	// Return the page to delete the user account.
+	@GetMapping("/delete")
+	public ModelAndView deleteUser(@AuthenticationPrincipal UserDetails userDetails, Model model,
+			RedirectAttributes redirectAttributes) {
+		Card card = null;
+
+		// Lookup the user's card by their email.
+		try {
+			card = cardService.findCardByEmail(userDetails.getUsername());
+			model.addAttribute("card", card);
+
+		} catch (NotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "No cards found.");
+		}
+		return new ModelAndView("delete");
+	}
+	
 	// Deletes a user.
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String deleteUserByEmail(@AuthenticationPrincipal UserDetails userDetails, Model model,
@@ -229,6 +259,7 @@ public class UserDashboardController {
 		// Lookup the user's card by their email.
 		try {
 			card = cardService.findCardByEmail(userDetails.getUsername());
+			model.addAttribute("card", card);
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "No cards found.");
 		}
@@ -260,6 +291,7 @@ public class UserDashboardController {
 		// Lookup the user's card by their email.
 		try {
 			card = cardService.findCardByEmail(userDetails.getUsername());
+			model.addAttribute("card", card);
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "No cards found.");
 		}

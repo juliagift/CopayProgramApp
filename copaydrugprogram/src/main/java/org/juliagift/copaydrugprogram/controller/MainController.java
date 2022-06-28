@@ -54,12 +54,6 @@ public class MainController {
 		return new ModelAndView("login");
 	}
 	
-	// Return the page to delete the user account.
-	@GetMapping("/delete")
-	public ModelAndView deleteUser() {
-		return new ModelAndView("delete");
-	}
-	
 	// If there are no admin users in the database, create one.
 	
 	/********************************
