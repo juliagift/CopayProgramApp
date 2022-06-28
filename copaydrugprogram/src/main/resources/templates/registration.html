@@ -26,10 +26,10 @@ form {
 	<!-- navigation bar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" id="welcome">Urimex Copay Card Program</a> <a
-					class="navbar-brand" th:href="@{/login}">Login </a> <a
-					class="navbar-brand" th:href="@{/home}">Home </a>
+			<div class="navbar-header-right">
+				<a class="navbar-brand" id="welcome">Urimex Copay Card Program</a> 
+				<a class="navbar-brand" th:href="@{/login}">Login </a> 
+				<a class="navbar-brand" th:href="@{/home}">Home </a>
 
 			</div>
 		</div>
@@ -39,9 +39,6 @@ form {
 			th:action="@{/registration}" th:object="${user}" method="post">
 			<div class="container py-5 h-100">
 				<div class="row justify-content-center align-items-center h-100">
-
-
-
 					<div class="col-12 col-lg-9 col-xl-7">
 						<div class="card shadow-2-strong card-registration">
 							<div class="card-body p-4 p-md-5">
@@ -64,7 +61,6 @@ form {
 										<div class="col-md-6 mb-4">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-												<!-- <label class="form-label" for="firstName">First Name</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="firstName" name="firstName" placeholder="First Name"
 													th:field="*{firstName}" />
@@ -72,14 +68,12 @@ form {
 												<p class="error-message"
 													th:each="error: ${#fields.errors('firstName')}"
 													th:text="${error}"></p>
-
 											</div>
 										</div>
 
 										<div class="col-md-6 mb-4">
 											<div class="form-outline date"
 												th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-												<!-- <label class="form-label" for="lastName">Last Name</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="lastName" name="lastName" placeholder="Last Name"
 													th:field="*{lastName}" required />
@@ -133,7 +127,6 @@ form {
 										<div class="col-md-12 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('phoneNumber')}? 'has-error':''">
-												<!-- <label class="form-label" for="phoneNumber">Phone Number</label> -->
 												<input class="form-control form-control-lg" type="tel"
 													id="phoneNumber" name="phoneNumber"
 													placeholder="Phone Number" th:field="*{phoneNumber}"
@@ -149,7 +142,6 @@ form {
 										<div class="col-md-12 mb-4">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('address1')}? 'has-error':''">
-												<!-- <label class="form-label" for="address1">Address1</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="address1" name="address1" placeholder="Address1"
 													th:field="*{address1}" required />
@@ -164,7 +156,6 @@ form {
 										<div class="col-md-12 mb-4">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('address2')}? 'has-error':''">
-												<!-- <label class="form-label" for="address2">Address2</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="address2" name="address2" placeholder="Address2"
 													th:field="*{address2}" />
@@ -179,7 +170,6 @@ form {
 										<div class="col-md-6 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
-												<!-- <label class="form-label" for="city">City</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="city" name="city" placeholder="City" th:field="*{city}"
 													required />
@@ -192,7 +182,6 @@ form {
 
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('state')}? 'has-error':''">
-												<!-- 	<label for="state" class="form-label">State</label> -->
 												<select class="form-control form-control-lg" id="state"
 													name="state" required>
 													<option value="none" selected disabled>Choose
@@ -214,7 +203,6 @@ form {
 										<div class="col-md-6 mb-4">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('zip5')}? 'has-error':''">
-												<!-- <label class="form-label" for="zip5">Zip5</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="zip5" name="zip5" placeholder="Zip5" th:field="*{zip5}"
 													required />
@@ -226,7 +214,6 @@ form {
 										<div class="col-md-6 mb-4">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('zip4')}? 'has-error':''">
-												<!-- <label class="form-label" for="zip4">Zip4</label> -->
 												<input class="form-control form-control-lg" type="text"
 													id="zip4" name="zip4" placeholder="Zip4" th:field="*{zip4}" />
 												<p class="error-message"
@@ -240,7 +227,6 @@ form {
 										<div class="col-md-6 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-												<!-- <label class="form-label" for="email">Email</label> -->
 												<input class="form-control form-control-lg" type="email"
 													id="email" name="email" placeholder="Email"
 													th:field="*{email}" required />
@@ -252,7 +238,6 @@ form {
 										<div class="col-md-6 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
-												<!-- <label class="form-label" for="confirmEmail">Confirm Email</label> -->
 												<input class="form-control form-control-lg" type="email"
 													id="confirmEmail" name="confirmEmail"
 													placeholder="Confirm Email" th:field="*{confirmEmail}"
@@ -268,7 +253,6 @@ form {
 										<div class="col-md-6 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-												<!-- <label class="form-label" for="password">Password</label> -->
 												<input class="form-control form-control-lg" type="password"
 													id="password" name="password" placeholder="Password"
 													th:field="*{password}" required />
@@ -280,7 +264,6 @@ form {
 										<div class="col-md-6 mb-4 pb-2">
 											<div class="form-outline"
 												th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-												<!-- <label class="form-label" for="confirmPassword">Confirm Password</label> -->
 												<input class="form-control form-control-lg" type="password"
 													id="confirmPassword" name="confirmPassword"
 													placeholder="Confirm Password"

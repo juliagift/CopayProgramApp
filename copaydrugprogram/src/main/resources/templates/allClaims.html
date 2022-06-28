@@ -71,7 +71,7 @@
 										<th scope="col">Patient Last Name</th>
 										<th scope="col">Transaction Date</th>
 										<th scope="col">Status</th>
-										<th scope="col">Patient Paid ($)</th>
+										<th scope="col">Patient Paid</th>
 										<th scope="col">Pharmacy</th>
 									</tr>
 								</thead>
@@ -81,9 +81,9 @@
 										<td th:text="${claim.card.cardId}"></td>
 										<td th:text="${claim.card.user.firstName}"></td>
 										<td th:text="${claim.card.user.lastName}"></td>
-										<td th:text="${claim.transactionDate}"></td>
+										<td th:text="${#temporals.format(claim.transactionDate, 'MM/dd/yyyy HH:mm:ss')}"></td>
 										<td th:text="${claim.status}"></td>
-										<td th:text="${claim.patientPayment}"></td>
+										<td>$<span th:text="${#numbers.formatDecimal(claim.patientPayment, 0, 'COMMA', 2, 'POINT')}"></span></td>
 										<td th:text="${claim.pharmacy.name}"></td>
 									</tr>
 								</tbody>

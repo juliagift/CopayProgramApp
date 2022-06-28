@@ -95,7 +95,7 @@
 										<td th:text="${card.cardId}"></td>
 										<td th:text="${card.user.firstName}"></td>
 										<td th:text="${card.user.lastName}"></td>
-										<td th:text="${card.user.dob}"></td>
+										<td th:text="${#dates.format(card.user.dob, 'dd-MMM-yyyy')}"></td>
 										<td th:text="${card.user.gender}"></td>
 										<td th:text="${card.user.address1}"></td>
 										<td th:text="${card.user.city}"></td>

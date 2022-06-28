@@ -39,12 +39,12 @@ class ClaimRepositoryTest {
 
 	@Test
 	void testGetAllClaimsByCard() {
-		List<Claim> claimsList = claimRepository.getAllClaimsByCard(5L);
+		List<Claim> claimsList = claimRepository.getAllClaimsByCard(2L);
 		
 		claimsList.forEach(System.out::println);
 		
 		assertNotNull(claimsList);
-		assertEquals(2, claimsList.size());
+		assertEquals(4, claimsList.size());
 	}
 
 }

@@ -44,7 +44,7 @@ public class ClaimServiceImpl implements ClaimService {
 	public Claim submitClaim(UserDetails userDetails, Pharmacy pharmacy) throws NotFoundException {
 		Card card = cardRepository.findCardByEmail(userDetails.getUsername());
 		Double patientPayment = card.getBenefit() * DRUG_COST;
-		Double manufacturerPayment = 1 - card.getBenefit() * DRUG_COST;
+		Double manufacturerPayment = DRUG_COST - patientPayment;
 		
 		Claim claim = new Claim("P", DRUG_COST, patientPayment, manufacturerPayment, LocalDateTime.now(), card, pharmacy);
 

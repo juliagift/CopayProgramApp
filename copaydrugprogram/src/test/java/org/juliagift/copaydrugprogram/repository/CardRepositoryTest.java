@@ -38,7 +38,8 @@ class CardRepositoryTest {
 	@Test
 	void testFindCardByEmail() {
 		
-		Card card = cardRepository.findCardByEmail("forgetful.jones@aol.com");
+		Card card = cardRepository.findCardByEmail("john.doe@coffin.com");
+		System.out.println(card);
 		
 		assertNotNull(card);
 	}
